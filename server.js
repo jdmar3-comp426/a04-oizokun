@@ -63,7 +63,7 @@ app.delete("/app/delete/user/:id", (req, res) => {
   const stmt = db.prepare("DELETE FROM userinfo WHERE id = ?");
   const info = stmt.run(req.params.id);
   res.status(200).json({
-    message: info.changes + " record created: ID " + req.params.id + " (200)",
+    message: info.changes + " record deleted: ID " + req.params.id + " (200)",
   });
 });
 
