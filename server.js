@@ -55,7 +55,7 @@ app.patch("/app/update/user/:id", (req, res) => {
 
   res.status(200).json({
     message:
-      info.changes + " record updated: ID " + info.lastInsertRowid + " (201)",
+      info.changes + " record updated: ID " + info.req.params.id + " (201)",
   });
 });
 
@@ -65,7 +65,7 @@ app.delete("/app/delete/user/:id", (req, res) => {
   const info = stmt.run(req.body.user, md5(req.body.pass));
   res.status(200).json({
     message:
-      info.changes + " record deleted: ID " + info.lastInsertRowid + " (201)",
+      info.changes + " record deleted: ID " + info.req.params.id + " (201)",
   });
 });
 
