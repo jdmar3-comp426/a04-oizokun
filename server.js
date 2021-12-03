@@ -61,9 +61,10 @@ app.patch("/app/update/user/:id", (req, res) => {
 // DELETE a single user (HTTP method DELETE) at endpoint /app/delete/user/:id
 app.delete("/app/delete/user/:id", (req, res) => {
   const stmt = db.prepare("DELETE FROM userinfo WHERE id = ?");
-  const info = stmt.get(req.body.user, md5(req.body.pass), req.params.id);
+  const info = stmt.get(req.body.user, md5(req.body.pass));
   res.status(200).json({
-    message: info.changes + " record deleted: ID " + req.params.id + " (200)",
+    message:
+      info.changes + " record created: ID " + info.lastInsertRowid + " (200)",
   });
 });
 
